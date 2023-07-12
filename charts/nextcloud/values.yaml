@@ -1,6 +1,5 @@
 ## Official nextcloud image version
 ## ref: https://hub.docker.com/r/library/nextcloud/tags/
-##
 image:
   repository: nextcloud
   # tag: 24.0.3-apache
