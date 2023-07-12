@@ -232,7 +232,6 @@ internalDatabase:
   enabled: true
   name: nextcloud
 
-##
 ## External database configuration
 ##
 externalDatabase:
