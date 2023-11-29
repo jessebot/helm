@@ -284,7 +284,7 @@ Create volume mounts for the nextcloud container as well as the cron sidecar con
 {{- if .Values.nextcloud.extraVolumeMounts }}
 {{ toYaml .Values.nextcloud.extraVolumeMounts }}
 {{- end }}
-{{- $fpmInUse := or .Values.nginx.enabled (contains (include "nextcloud.image" .) "fpm") -}}
+{{- $fpmInUse := contains "fpm" (include "nextcloud.image" .) -}}
 {{- range $key, $value := .Values.nextcloud.phpConfigs }}
 - name: nextcloud-phpconfig
   mountPath: {{ $fpmInUse | ternary (printf "/usr/local/etc/php-fpm.d/%s" $key | quote) (printf "/usr/local/etc/php/conf.d/%s" $key | quote) }}
