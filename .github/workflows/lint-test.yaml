@@ -2,7 +2,6 @@ name: Lint and Test Charts
 
 on:
   pull_request:
-    types: [labeled]
     paths:
 jobs:
   changes:
@@ -140,7 +139,7 @@ jobs:
   test-nginx:
     runs-on: ubuntu-22.04
     needs: [changes, lint]
-    if: needs.changes.outputs.src != 'false' && github.event.label.name == 'nginx container'
+    if: needs.changes.outputs.src != 'false'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
