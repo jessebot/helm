@@ -140,7 +140,7 @@ jobs:
   test-nginx:
     runs-on: ubuntu-22.04
     needs: [changes, lint]
-    if: needs.changes.outputs.src != 'false' && github.event.label.name == 'nginx'
+    if: needs.changes.outputs.src != 'false' && github.event.label.name == 'nginx container'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
