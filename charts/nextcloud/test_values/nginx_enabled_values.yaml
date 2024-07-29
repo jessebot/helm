@@ -1,0 +1,7 @@
+# use fpm image because we're using nginx
+image:
+  flavor: fpm
+
+nginx:
+  # enable nginx container in nextcloud pod
+  enabled: true

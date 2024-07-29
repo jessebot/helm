@@ -1,0 +1,8 @@
+hpa:
+  enabled: true
+  # have the default deployment use two pods
+  minPods: 2
+  # allow up to 3 pods if cpu utilization is above 75%
+  maxPods: 3
+  # cpu utilization before scaling pods
+  targetCPUUtilizationPercentage: 75
