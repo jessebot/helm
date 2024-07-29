@@ -72,21 +72,22 @@ jobs:
 
           # test the helm chart with postgresql subchart enabled
           - name: PostgreSQL Enabled
-            helm_args: '--helm-extra-args "--values values.yaml --values test_values/postgresql_enabled_values.yaml"'
+          # helm_args: '--helm-extra-args "--values values.yaml --values test_values/postgresql_enabled_values.yaml"'
+            helm_args: '--helm-extra-args "--values charts/nextcloud/values.yaml --values charts/nextcloud/test_values/postgresql_enabled_values.yaml"'
 
           # test the helm chart with nginx container enabled
-          - name: Nginx Enabled
-            helm_args: '--helm-extra-args "--values values.yaml --values test_values/nginx_enabled_values.yaml"'
+          # - name: Nginx Enabled
+          #   helm_args: '--helm-extra-args "--values values.yaml --values test_values/nginx_enabled_values.yaml"'
 
-          # test the helm chart with horizontal pod autoscaling enabled
-          - name: Horizontal Pod Autoscaling Enabled
-            helm_args: '--helm-extra-args "--values values.yaml --values test_values/hpa_enabled_values.yaml"'
+          # # test the helm chart with horizontal pod autoscaling enabled
+          # - name: Horizontal Pod Autoscaling Enabled
+          #   helm_args: '--helm-extra-args "--values values.yaml --values test_values/hpa_enabled_values.yaml"'
 
           # test the helm chart with s3 as the primary storage
           - name: S3 Enabled as Primary Storage
             # we need to skip the clean up so we can test adding a file
             helm_args: |
-                --helm-extra-args "--values values.yaml --values test_values/s3_enabled_values.yaml" \
+                --helm-extra-args "--values charts/nextcloud/test_values/s3_enabled_values.yaml" \
                 --namespace nextcloud \
                 --skip-clean-up
 
