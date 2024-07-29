@@ -1,0 +1,16 @@
+# disable default internal database, SQLite
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: True
+  type: postgresql
+  password: testing123456
+
+# enable PostgreSQL as the database for Nextcloud
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      auth:
+        password: testing123456

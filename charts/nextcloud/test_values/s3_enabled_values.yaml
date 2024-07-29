@@ -1,0 +1,31 @@
+# We override the names of every resource to have a predictable service name to query
+fullnameOverride: nextcloud
+
+# use fpm image because we're using nginx
+image:
+  flavor: fpm
+
+nextcloud:
+  host: nextcloud
+  # avoid any issues with domain not trusted during test
+  trustedDomains:
+    - '*'
+  objectStore:
+    s3:
+      enabled: true
+      # minio credentials are passed into the minio helm chart in the previous ci step
+      accessKey: nextcloud
+      secretKey: rootpass123
+      host: minio.nextcloud.svc.cluster.local
+      # default minio port
+      port: 9000
+      # don't use TLS during testing
+      ssl: false
+      # nextcloud auto-creates this bucket
+      bucket: nextcloud
+      # need to this to not use bucket URL like bucket.s3host.com and instead use s3host.com/bucket
+      usePathStyle: true
+
+# enable nginx, because apache doesn't seem to work with these values
+nginx:
+  enabled: true
